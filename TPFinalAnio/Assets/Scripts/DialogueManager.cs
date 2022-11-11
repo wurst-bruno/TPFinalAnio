@@ -13,12 +13,14 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] int posicionFrase;
     [SerializeField] bool hasTalked;
     public static bool misionempezadadialogue;
-    public static bool estatuilla=false;
-
+    public bool estatuilla=false;
+    public static bool comenzaraseguirplayer = false;
+    public GameObject enemy;
     // Start is called before the first frame update
     void Start()
     {
         dialogueUI.SetActive(false);
+        enemy.GetComponent<AgentScript>().enabled = false;
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class DialogueManager : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("NPC"))
+        if (other.gameObject.CompareTag("Player"))
         {
             //frasesDialogo = other.gameObject.GetComponent<NPCDIALOGUE>().data.dialoguelines;
 
@@ -98,8 +100,10 @@ public class DialogueManager : MonoBehaviour
         if (estatuilla == true)
         {
             misionempezadadialogue = false;
+            enemy.GetComponent<AgentScript>().enabled = true;
         }
     }
+   
 }
 
 

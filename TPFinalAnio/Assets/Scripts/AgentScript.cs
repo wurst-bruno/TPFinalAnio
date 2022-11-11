@@ -7,11 +7,12 @@ public class AgentScript : MonoBehaviour
 {
     public Transform destinationTransform;
     public NavMeshAgent agent;
-
-
+    public static bool seguirplayer;
+    GameObject player;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        
     }
 
     // Update is called once per frame
