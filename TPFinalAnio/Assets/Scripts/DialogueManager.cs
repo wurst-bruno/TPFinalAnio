@@ -37,7 +37,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //frasesDialogo = other.gameObject.GetComponent<NPCDIALOGUE>().data.dialoguelines;
+           // frasesDialogo = other.gameObject.GetComponent<NPCDIALOGUE>().data.dialoguelines;
 
 
             dialogueUI.SetActive(true);
@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("NPC"))
+        if (other.gameObject.CompareTag("Player"))
         {
             //al entrar desactiva la UI de dialogo
             dialogueUI.SetActive(false);
