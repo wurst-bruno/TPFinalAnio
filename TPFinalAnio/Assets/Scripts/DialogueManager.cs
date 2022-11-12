@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 public class DialogueManager : MonoBehaviour
 {
 
@@ -20,11 +21,16 @@ public class DialogueManager : MonoBehaviour
     public float timetoenemydeathboixactivation;
     public bool timeron = false;
     public bool deathboxon = false;
+    [SerializeField] private PostProcessVolume postprocessvolume;
+    private AmbientOcclusion ambientocclusion;
+    
     // Start is called before the first frame update
     void Start()
     {
         dialogueUI.SetActive(false);
         enemy.GetComponent<AgentScript>().enabled = false;
+        postprocessvolume.profile.TryGetSettings(out ambientocclusion);
+        ambientocclusion.active = false;
     }
 
     // Update is called once per frame
@@ -123,6 +129,7 @@ public class DialogueManager : MonoBehaviour
             misionempezadadialogue = false;
            
             timeron = true;
+            ambientocclusion.active = true;
         }
     }
    
