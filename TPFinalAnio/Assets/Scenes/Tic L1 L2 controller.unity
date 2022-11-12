@@ -1045,6 +1045,12 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1046807686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1687798268663104373, guid: 75de62f9478685d4b94ac9d5b3c8e86e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1929154863}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1082400858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13344,6 +13350,10 @@ MonoBehaviour:
   hasTalked: 0
   estatuilla: 0
   enemy: {fileID: 1896370380}
+  player: {fileID: 1046807686}
+  timetoenemydeathboixactivation: 5
+  timeron: 0
+  deathboxon: 0
 --- !u!136 &1896370386
 CapsuleCollider:
   m_ObjectHideFlags: 0

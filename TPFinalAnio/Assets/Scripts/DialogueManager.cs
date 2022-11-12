@@ -16,6 +16,10 @@ public class DialogueManager : MonoBehaviour
     public bool estatuilla=false;
     public static bool comenzaraseguirplayer = false;
     public GameObject enemy;
+    public GameObject player;
+    public float timetoenemydeathboixactivation;
+    public bool timeron = false;
+    public bool deathboxon = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,18 @@ public class DialogueManager : MonoBehaviour
             NextFrase();
         }
         terminarmision();
+        if (timeron == true)
+        {
+            if (timetoenemydeathboixactivation > 0)
+            {
+                timetoenemydeathboixactivation -= Time.deltaTime;
+            }
+            else
+            {
+                enemy.GetComponent<AgentScript>().enabled = true;
+                deathboxon = true;
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -52,6 +68,11 @@ public class DialogueManager : MonoBehaviour
             {
                 textoDelDialogo.text = "Ve a buscar las cosas!";
 
+            }
+            if (deathboxon==true)
+            {
+                
+                Destroy(player);
             }
         }
     }
@@ -100,7 +121,8 @@ public class DialogueManager : MonoBehaviour
         if (estatuilla == true)
         {
             misionempezadadialogue = false;
-            enemy.GetComponent<AgentScript>().enabled = true;
+           
+            timeron = true;
         }
     }
    
