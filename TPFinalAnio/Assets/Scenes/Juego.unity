@@ -234,8 +234,10 @@ GameObject:
   - component: {fileID: 196086753}
   - component: {fileID: 196086752}
   - component: {fileID: 196086751}
+  - component: {fileID: 196086756}
+  - component: {fileID: 196086755}
   m_Layer: 0
-  m_Name: WinPlane
+  m_Name: Win
   m_TagString: Win
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -272,7 +274,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3305b6e92686c0f4880c30a357f12b05, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -311,9 +313,38 @@ Transform:
   m_LocalPosition: {x: -1.11, y: 0.05, z: -0.69862}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
-  m_Father: {fileID: 1107075273}
-  m_RootOrder: 8
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &196086755
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196086750}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &196086756
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196086750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &209519002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,6 +1174,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1929154863}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1046807691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046807686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4320d26bd290ed4ea97f4538cef5d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1082400858
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10828,7 +10871,6 @@ Transform:
   - {fileID: 775198940}
   - {fileID: 1867559505}
   - {fileID: 416446174}
-  - {fileID: 196086754}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13495,11 +13537,12 @@ MonoBehaviour:
   enemy: {fileID: 1896370380}
   player: {fileID: 1046807686}
   estatuillamodel: {fileID: 1681250399}
-  timetoenemydeathboixactivation: 7.58
+  timetoenemydeathboixactivation: 5
   timeforexitdoortoopen: 1.11
   timerondeathbox: 0
   timeronexitdoor: 0
   deathboxon: 0
+  delay: 0.9
   postprocessvolume: {fileID: 1172912410}
   exitdoor: {fileID: 1106984239}
 --- !u!136 &1896370386

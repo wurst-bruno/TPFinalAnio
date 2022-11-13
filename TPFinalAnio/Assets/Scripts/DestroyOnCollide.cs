@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DestroyOnCollide : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
@@ -11,6 +12,6 @@ public class DestroyOnCollide : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
 
 }

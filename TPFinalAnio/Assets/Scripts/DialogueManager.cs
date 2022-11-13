@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     public bool timerondeathbox = false;
     public bool timeronexitdoor = false;
     public bool deathboxon = false;
+    public float delay = 5;
 
     Animator animator;
 
@@ -52,11 +53,18 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueUI.SetActive(false);//esto lo hice pq se activaba mientras te corria el personaje
 
-            animator.Play("run");
+            StartCoroutine(Countdown());
+
         }
         else
         {
             animator.Play("wave");
+        }
+        IEnumerator Countdown()
+        {
+            yield return new WaitForSeconds(delay);
+            animator.Play("run");
+
         }
 
         if (Input.GetKeyDown(KeyCode.E) && hasTalked == false)
@@ -122,7 +130,7 @@ public class DialogueManager : MonoBehaviour
             }
             if (deathboxon==true)
             {
-                
+                Scenemanaher();
                 Destroy(player);
             }
         }
@@ -133,11 +141,9 @@ public class DialogueManager : MonoBehaviour
         {
             estatuilla = true;
         }
-        if (other.gameObject.CompareTag("WinPlane")) //me quedé aca, que si tocas la plane... cambia a la win scene pero no llegue a terminar hoy.
-        {
-            Debug.Log("hhh");
-        }
+       
     }
+    
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -182,7 +188,10 @@ public class DialogueManager : MonoBehaviour
             ambientocclusion.active = true;
         }
     }
-    
+    public void Scenemanaher()
+    {
+        SceneManager.LoadScene("LoseScene");
+    }
 }
 
 
