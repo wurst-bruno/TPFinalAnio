@@ -8805,6 +8805,7 @@ GameObject:
   - component: {fileID: 1107075407}
   - component: {fileID: 1103683885}
   - component: {fileID: 1104782189}
+  - component: {fileID: 1106984240}
   m_Layer: 0
   m_Name: PuertaPasillo
   m_TagString: Untagged
@@ -8812,6 +8813,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &1106984240
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106984239}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0500001, y: 1.9213438, z: 0.05000038}
+  m_Center: {x: 0.52500004, y: 0.9606718, z: -0.024999907}
 --- !u!1 &1106984241
 GameObject:
   m_ObjectHideFlags: 0
@@ -13317,10 +13331,14 @@ MonoBehaviour:
   estatuilla: 0
   enemy: {fileID: 1896370380}
   player: {fileID: 1046807686}
+  estatuillamodel: {fileID: 1681250399}
   timetoenemydeathboixactivation: 5
-  timeron: 0
+  timeforexitdoortoopen: 1.11
+  timerondeathbox: 0
+  timeronexitdoor: 0
   deathboxon: 0
   postprocessvolume: {fileID: 1172912410}
+  exitdoor: {fileID: 1106984239}
 --- !u!136 &1896370386
 CapsuleCollider:
   m_ObjectHideFlags: 0

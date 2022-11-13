@@ -18,12 +18,16 @@ public class DialogueManager : MonoBehaviour
     public static bool comenzaraseguirplayer = false;
     public GameObject enemy;
     public GameObject player;
+    public GameObject estatuillamodel;
     public float timetoenemydeathboixactivation;
-    public bool timeron = false;
+    public float timeforexitdoortoopen;
+    public bool timerondeathbox = false;
+    public bool timeronexitdoor = false;
     public bool deathboxon = false;
+
     [SerializeField] private PostProcessVolume postprocessvolume;
     private AmbientOcclusion ambientocclusion;
-    
+    public GameObject exitdoor;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,7 @@ public class DialogueManager : MonoBehaviour
         enemy.GetComponent<AgentScript>().enabled = false;
         postprocessvolume.profile.TryGetSettings(out ambientocclusion);
         ambientocclusion.active = false;
+        estatuillamodel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,7 +46,7 @@ public class DialogueManager : MonoBehaviour
             NextFrase();
         }
         terminarmision();
-        if (timeron == true)
+        if (timerondeathbox == true)
         {
             if (timetoenemydeathboixactivation > 0)
             {
@@ -52,6 +57,25 @@ public class DialogueManager : MonoBehaviour
                 enemy.GetComponent<AgentScript>().enabled = true;
                 deathboxon = true;
             }
+          
+        }
+        if (timeronexitdoor == true)
+        {
+           
+            if (timeforexitdoortoopen > 0)
+            {
+                timeforexitdoortoopen -= Time.deltaTime;
+            }
+            else
+            {
+                enemy.GetComponent<AgentScript>().enabled = true;
+                Destroy(exitdoor);
+            }
+
+        }
+        if (hasTalked == true)
+        {
+            estatuillamodel.SetActive(true);
         }
     }
 
@@ -128,7 +152,8 @@ public class DialogueManager : MonoBehaviour
         {
             misionempezadadialogue = false;
            
-            timeron = true;
+            timerondeathbox = true;
+            timeronexitdoor = true;
             ambientocclusion.active = true;
         }
     }
