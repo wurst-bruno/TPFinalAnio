@@ -8,6 +8,7 @@ TagManager:
   - mesa
   - NPC
   - estatuilla
+  - Win
   layers:
   - Default
   - TransparentFX

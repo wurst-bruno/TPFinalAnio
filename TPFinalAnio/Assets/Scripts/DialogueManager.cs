@@ -5,6 +5,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
+
 public class DialogueManager : MonoBehaviour
 {
 
@@ -25,12 +27,16 @@ public class DialogueManager : MonoBehaviour
     public bool timeronexitdoor = false;
     public bool deathboxon = false;
 
+    Animator animator;
+
     [SerializeField] private PostProcessVolume postprocessvolume;
     private AmbientOcclusion ambientocclusion;
     public GameObject exitdoor;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         dialogueUI.SetActive(false);
         enemy.GetComponent<AgentScript>().enabled = false;
         postprocessvolume.profile.TryGetSettings(out ambientocclusion);
@@ -39,12 +45,25 @@ public class DialogueManager : MonoBehaviour
     }
 
     // Update is called once per frame
+
     void Update()
     {
+        if (estatuilla == true)
+        {
+            dialogueUI.SetActive(false);//esto lo hice pq se activaba mientras te corria el personaje
+
+            animator.Play("run");
+        }
+        else
+        {
+            animator.Play("wave");
+        }
+
         if (Input.GetKeyDown(KeyCode.E) && hasTalked == false)
         {
             NextFrase();
         }
+
         terminarmision();
         if (timerondeathbox == true)
         {
@@ -76,6 +95,8 @@ public class DialogueManager : MonoBehaviour
         if (hasTalked == true)
         {
             estatuillamodel.SetActive(true);
+            dialogueUI.SetActive(false); //esto lo hice pq se activaba mientras te corria el personaje
+
         }
     }
 
@@ -111,6 +132,10 @@ public class DialogueManager : MonoBehaviour
         if (other.gameObject.CompareTag("estatuilla"))
         {
             estatuilla = true;
+        }
+        if (other.gameObject.CompareTag("WinPlane")) //me quedé aca, que si tocas la plane... cambia a la win scene pero no llegue a terminar hoy.
+        {
+            Debug.Log("hhh");
         }
     }
     void OnTriggerExit(Collider other)
@@ -157,7 +182,7 @@ public class DialogueManager : MonoBehaviour
             ambientocclusion.active = true;
         }
     }
-   
+    
 }
 
 
