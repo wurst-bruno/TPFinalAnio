@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
     public bool timeronexitdoor = false;
     public bool deathboxon = false;
     public float delay = 5;
-
+    public GameObject textocorrer;
     Animator animator;
 
     [SerializeField] private PostProcessVolume postprocessvolume;
@@ -43,6 +43,7 @@ public class DialogueManager : MonoBehaviour
         postprocessvolume.profile.TryGetSettings(out ambientocclusion);
         ambientocclusion.active = false;
         estatuillamodel.SetActive(false);
+        textocorrer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -125,7 +126,7 @@ public class DialogueManager : MonoBehaviour
 
             else
             {
-                textoDelDialogo.text = "Ve a buscar las cosas!";
+                textoDelDialogo.text = "Ve a buscar la estatuilla!";
 
             }
             if (deathboxon==true)
@@ -186,6 +187,7 @@ public class DialogueManager : MonoBehaviour
             timerondeathbox = true;
             timeronexitdoor = true;
             ambientocclusion.active = true;
+            textocorrer.SetActive(true);
         }
     }
     public void Scenemanaher()
