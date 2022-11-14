@@ -13560,9 +13560,9 @@ MonoBehaviour:
   textoBoton: {fileID: 1773570710}
   frasesDialogo:
   - Hace poco Jero se fue de viaje
-  - 'Y encontro una estatuilla '
+  - "Y encontr\xF3 una estatuilla "
   - La cual dicen que esta maldita
-  - Me la podrias traer para estudiarla?
+  - "\xBFMe la podrias traer para estudiarla?"
   posicionFrase: 0
   hasTalked: 0
   estatuilla: 0
